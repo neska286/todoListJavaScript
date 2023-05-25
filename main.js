@@ -18,7 +18,9 @@ submit.addEventListener('click',(eo)=>{
     if(input.value !== ""){
         addTasks(input.value);
         input.value = ""
+        tasks.style.display = "block"
     }
+  
 })
 tasks.addEventListener("click",(e)=>{
     // console.log(e.target)
@@ -46,9 +48,8 @@ function addTasks(taskText){
 }
 
 function renderTodos(todoItems){
-    tasks.innerHTML = " "
- let displayTodos = todoItems.map((todo)=>(
-     ` <div class="todo-items">
+ let displayTodos = todoItems.map((todo)=>( ` 
+     <div class="todo-items">
             <div class="item ${todo.isDone ? "done" : ""}" data-id=${todo.id}>
             ${todo.title}
               <button class="delete-button del"><i class="fas fa-trash"></i></button>
@@ -56,6 +57,7 @@ function renderTodos(todoItems){
           </div>
           `
  ))
+
  tasks.innerHTML = displayTodos.join('')
 }
 
